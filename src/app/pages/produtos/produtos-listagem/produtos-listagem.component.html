@@ -6,27 +6,49 @@
     <div class="titulo">
       <h1>Shop</h1>
     </div>
-    <div class="detalhes-listagem"><p>Showing 1-12 of 36 results</p></div>
+    <div class="detalhes-listagem">
+      <p>Showing 1-12 of 36 results</p>
+      <mat-select
+        #ordenacao
+        (selectionChange)="ordenacao.value ? ordenar($event.value) : null"
+        value="0"
+      >
+        <mat-option value="0">Ordenar</mat-option>
+        <mat-option
+          *ngFor="let ordenacao of ordenacoes"
+          [value]="ordenacao.valor"
+          [id]="ordenacao.valor"
+        >
+          {{ ordenacao.legenda }}
+        </mat-option>
+      </mat-select>
+    </div>
   </div>
 </div>
 <div class="produtos">
-  <div class="produto" *ngFor="let number of [0, 1, 2, 3, 4, 5, 6, 7, 8]">
+  <div class="produto" *ngFor="let produto of produtos">
     <div class="acoes">
       <div class="ver">
-        <i class="material-icons-outlined">settings_overscan</i>
+        <i class="material-icons-outlined" (click)="verProduto(produto)"
+          >settings_overscan</i
+        >
       </div>
       <div class="comprar">
-        <i class="material-icons-outlined">shopping_bag</i>
+        <i
+          class="material-icons-outlined"
+          (click)="adicionarAoCarrinho(produto)"
+          >shopping_bag</i
+        >
       </div>
     </div>
     <div class="imagem-produto">
-      <img src="/assets/images/tenis.png" [alt]="'Tenis-' + number" />
+      <img src="/assets/images/tenis.png" [alt]="'Tenis-' + produto.nome" />
     </div>
     <div class="detalhes-produto">
       <h4>
-        <b>Popular Shoe Trends</b>
+        <b>{{ produto.nome }}</b>
       </h4>
-      <h4>$23{{ number }}</h4>
+      <h4>${{ produto.valor }}</h4>
     </div>
   </div>
 </div>

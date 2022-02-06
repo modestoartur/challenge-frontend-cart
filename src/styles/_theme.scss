@@ -91,3 +91,17 @@ $ilegra-theme: mat-light-theme($ilegra-primary, $ilegra-accent);
   display: flex;
   flex-direction: column;
 }
+mat-select {
+  background: white;
+  border-radius: 10px;
+  line-height: 1.5em;
+  padding: 2% 4%;
+}
+.migalha {
+  p {
+    cursor: pointer;
+  }
+  span.branco {
+    cursor: default;
+  }
+}
