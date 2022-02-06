@@ -1,11 +1,24 @@
+import { ProdutosListagemComponent } from './pages/produtos/produtos-listagem/produtos-listagem.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
+import { AuthGuard } from './core/guards';
+import { Permissoes } from '@app/core/models/permissoes.enum';
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [],
+    children: [
+      {
+        path: 'produtos',
+        component: ProdutosListagemComponent,
+        canActivate: [AuthGuard],
+        data: {
+          permissao: Permissoes.consultarProduto,
+        },
+      },
+      { path: '', redirectTo: 'produtos', pathMatch: 'full' },
+    ],
   },
 ];
 const isIframe = window !== window.parent && !window.opener;

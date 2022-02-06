@@ -1,0 +1,94 @@
+.card-shop {
+  background: url('/assets/images/bg-bolas.jpeg') no-repeat center center;
+  background-size: cover;
+  border-radius: 30px;
+  height: 50vh;
+  padding: 2.5%;
+  .controles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .migalha > p,
+    .detalhes-listagem > p {
+      font-size: 1em;
+      font-weight: 400;
+    }
+    .titulo {
+      h1 {
+        color: black;
+        font-size: 3em;
+        font-weight: 600;
+      }
+    }
+  }
+}
+// Colors
+$bg-color: #ffe2cd;
+$dot-color: #f8ae7a;
+$dot-size: 1px;
+$dot-space: 22px;
+.produtos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .produto {
+    cursor: pointer;
+    flex: 1 1 auto;
+    background: linear-gradient(
+          90deg,
+          $bg-color ($dot-space - $dot-size),
+          transparent 1%
+        )
+        center,
+      linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+      $dot-color;
+    background-size: $dot-space $dot-space;
+    border-radius: 30px;
+    padding: 2%;
+    min-height: 20em;
+    .acoes {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .imagem-produto {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .detalhes-produto {
+      text-align: center;
+      font-size: 1.3em;
+      color: #45409c;
+      h4 {
+        margin: 4%;
+      }
+    }
+    div {
+      i {
+        color: #636363;
+      }
+    }
+  }
+}
+@media all and (min-width: 768px) {
+  .produtos {
+    padding: 4% 8%;
+    margin-top: -25%;
+    .produto {
+      margin: 1% 2%;
+      width: 24%;
+    }
+  }
+}
+@media all and (max-width: 767px) {
+  .produtos {
+    padding: 11% 8%;
+    margin-top: -90%;
+    .produto {
+      width: 100%;
+    }
+  }
+}
