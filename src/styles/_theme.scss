@@ -81,3 +81,8 @@ $ilegra-theme: mat-light-theme($ilegra-primary, $ilegra-accent);
 .col12 {
   width: 100%;
 }
+.linha {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}

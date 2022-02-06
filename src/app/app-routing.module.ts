@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { AuthGuard } from './core/guards';
 import { Permissoes } from '@app/core/models/permissoes.enum';
+import { ProdutosDetalhesComponent } from './pages/produtos/produtos-detalhes/produtos-detalhes.component';
 const routes: Routes = [
   {
     path: '',
@@ -12,6 +13,14 @@ const routes: Routes = [
       {
         path: 'produtos',
         component: ProdutosListagemComponent,
+        canActivate: [AuthGuard],
+        data: {
+          permissao: Permissoes.consultarProduto,
+        },
+      },
+      {
+        path: 'produto/:id',
+        component: ProdutosDetalhesComponent,
         canActivate: [AuthGuard],
         data: {
           permissao: Permissoes.consultarProduto,
