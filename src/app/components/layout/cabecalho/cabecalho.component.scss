@@ -28,4 +28,17 @@ header {
     font-weight: 500;
     color: black;
   }
+  .sacola {
+    margin-left: 0.5em;
+    cursor: pointer;
+    background: #feeebe;
+    font-size: 1.3em;
+    border-radius: 50%;
+    border: 5px solid #fff4d5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 2em;
+  }
 }

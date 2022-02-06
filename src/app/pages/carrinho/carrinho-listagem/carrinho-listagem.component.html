@@ -1,0 +1,58 @@
+<div class="card-shop">
+  <div class="linha">
+    <div class="migalha">
+      <p><span class="branco">Home&nbsp;</span> / Cart</p>
+    </div>
+    <div class="titulo">
+      <h1>Your Cart</h1>
+    </div>
+    <div class="detalhes-listagem">
+      <p>
+        <i class="material-icons-outlined">arrow_back</i>&nbsp; Continue
+        shopping
+      </p>
+    </div>
+  </div>
+</div>
+<div class="linha">
+  <div class="destaque">
+    <div class="esquerda">
+      <div *ngFor="let number of [0, 1, 2, 3]" class="produto-carrinho linha">
+        <div class="detalhamento-produto coluna">
+          <div class="titulo-produto">
+            <h1>
+              <b>Nike Air Max 270 to Chuck Taylors</b>
+            </h1>
+          </div>
+          <div class="descricao-produto">
+            Nike`s air orce 1s were among the most popular sneakers this year.
+          </div>
+        </div>
+        <div class="quantidade-produto">
+          <div class="linha">
+            <i class="material-icons-outlined">add_circle_outline</i>
+            <span>{{ 1 }}</span>
+            <i class="material-icons-outlined">remove_circle_outline</i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="direita">
+      <div class="total-carrinho">
+        <div class="total-carrinho-titulo">
+          <h1>
+            <b>Total</b>
+          </h1>
+        </div>
+        <div class="total-carrinho-valor">
+          <h1>
+            <b>R$ 1.000,00</b>
+          </h1>
+        </div>
+      </div>
+      <div class="chamada-carrinho">
+        <button class="ir-ao-checkout">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
