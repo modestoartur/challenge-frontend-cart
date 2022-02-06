@@ -1,1 +1,108 @@
-<p>produtos-detalhes works!</p>
+<div class="card-shop">
+  <div class="linha">
+    <div class="migalha">
+      <p><span class="branco">Home&nbsp;</span> / Product</p>
+    </div>
+    <div class="titulo">
+      <h1>Product Details</h1>
+    </div>
+    <div class="detalhes-listagem">
+      <p>
+        Next Product <i class="material-icons-outlined">arrow_back</i>
+        <i class="material-icons-outlined">arrow_forward</i>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="linha">
+  <div class="produto-destaque">
+    <div class="esquerda">
+      <div class="titulo-produto">
+        <h1>
+          <b>Nike Air Max 270 to Chuck Taylors</b>
+        </h1>
+      </div>
+      <div class="descricao-produto">
+        Nike`s air orce 1s were among the most popular sneakers this year.
+      </div>
+      <div class="miniaturas-produto">
+        <div class="miniatura-produto">
+          <img src="/assets/images/tenis-thumb.png" alt="Tenis Miniatura" />
+        </div>
+        <div class="miniatura-produto">
+          <img src="/assets/images/tenis-thumb.png" alt="Tenis Miniatura" />
+        </div>
+        <div class="miniatura-produto">
+          <img src="/assets/images/tenis-thumb.png" alt="Tenis Miniatura" />
+        </div>
+      </div>
+    </div>
+    <div class="meio">
+      <div class="imagem-produto">
+        <img src="/assets/images/tenis-sem-bg.png" [alt]="'Tenis'" />
+      </div>
+      <div class="preco-produto">
+        <h4>$231</h4>
+      </div>
+    </div>
+    <div class="direita">
+      <div class="avaliacao-produto">
+        <span>Review:</span>
+        <div class="stars">
+          <i
+            *ngFor="let number of [0, 1, 2, 3, 4]"
+            class="material-icons-outlined"
+            >start_rate</i
+          >
+        </div>
+        <span>4.5 (6)</span>
+      </div>
+      <div class="cores-produto">
+        <span>Color:</span>
+        <div *ngFor="let number of [0, 1, 2, 3]" class="cor-produto"></div>
+      </div>
+      <div class="tamanhos-produto">
+        <span>Size:</span>
+        <div>
+          <div
+            *ngFor="let number of [37, 38, 39, 40, 41, 42]"
+            class="tamanho-produto"
+          >
+            <div class="opcao" [ngClass]="number === 38 ? 'selecionada' : null">
+              {{ number }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chamada-produto">
+        <button class="adicionar-ao-carrinho">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="linha">
+  <div class="produtos">
+    <div class="linha">
+      <div class="titulo"><h1>Related Product</h1></div>
+    </div>
+    <div class="produto" *ngFor="let number of [1, 2, 3]">
+      <div class="acoes">
+        <div class="ver">
+          <i class="material-icons-outlined">settings_overscan</i>
+        </div>
+        <div class="comprar">
+          <i class="material-icons-outlined">shopping_bag</i>
+        </div>
+      </div>
+      <div class="img-produto">
+        <img src="/assets/images/tenis.png" [alt]="'Tenis-' + number" />
+      </div>
+      <div class="detalhes-produto">
+        <h4>
+          <b>Popular Shoe Trends</b>
+        </h4>
+        <h4>$23{{ number }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
