@@ -23,7 +23,6 @@
     }
   }
 }
-// Colors
 $bg-color: #ffe2cd;
 $dot-color: #f8ae7a;
 $dot-size: 1px;
@@ -33,7 +32,6 @@ $dot-space: 22px;
   justify-content: space-between;
   flex-wrap: wrap;
   .produto {
-    cursor: pointer;
     flex: 1 1 auto;
     background: linear-gradient(
           90deg,
@@ -56,6 +54,7 @@ $dot-space: 22px;
       img {
         width: 100%;
         height: auto;
+        cursor: pointer;
       }
     }
     .detalhes-produto {
@@ -69,6 +68,7 @@ $dot-space: 22px;
     div {
       i {
         color: #636363;
+        cursor: pointer;
       }
     }
   }

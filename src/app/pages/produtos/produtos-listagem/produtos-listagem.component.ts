@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import Produto from '@app/core/models/produto.model';
 import { LoaderService } from '@app/core/services/loader.service';
 import { ProdutosService } from '@app/core/services/produtos.service';
@@ -12,34 +12,36 @@ import { NotificacoesService } from '../../../core/services/notificacoes.service
 })
 export class ProdutosListagemComponent implements OnInit {
   codigo: string;
-  ordenacao: string;
   produtos: Array<Produto>;
+  ordenacao: string;
+  ordenacoes: Array<any> = [
+    {
+      legenda: 'Melhor Avaliado',
+      valor: 'avaliacoes',
+    },
+    {
+      legenda: 'Menor Valor',
+      valor: 'valor_crescente',
+    },
+    {
+      legenda: 'Maior Valor',
+      valor: 'valor_descrescente',
+    },
+  ];
   constructor(
-    public loader: LoaderService,
+    private loader: LoaderService,
     private produtosService: ProdutosService,
     private notificacoes: NotificacoesService,
-    private route: ActivatedRoute
-  ) {
-    if (this.route.snapshot.queryParamMap.get('produto')) {
-      this.codigo = this.route.snapshot.queryParamMap.get('produto');
-    }
+    private router: Router
+  ) {}
+  async ngOnInit() {
+    await this.obterProdutos();
+    console.log(this.produtos);
   }
-  ngOnInit(): void {
-    if (this.codigo !== '') {
-      this.consultar(this.codigo);
-    }
-  }
-  async obterProdutos(secao?, tipo?, codigo?) {
+  async obterProdutos(ordenacao = this.ordenacao) {
     try {
-      const data: any = await this.produtosService.obterVarios(
-        '1',
-        '1',
-        this.ordenacao,
-        secao !== '0' ? secao : undefined,
-        tipo !== 0 ? tipo : undefined,
-        codigo !== '' ? codigo : undefined
-      );
-      this.produtos = data.items;
+      const data = await this.produtosService.obterVarios(ordenacao);
+      this.produtos = data;
     } catch (response) {
       this.notificacoes.notificar(
         'erro',
@@ -52,26 +54,18 @@ export class ProdutosListagemComponent implements OnInit {
       this.loader.stop();
     }
   }
-  async consultar(codigo) {
-    try {
-      this.loader.start();
-      this.obterProdutos(codigo ? codigo : undefined);
+  ordenar(tipo) {
+    this.loader.start();
+    this.ordenacao = tipo;
+    setTimeout(() => {
+      this.obterProdutos(tipo);
       this.loader.stop();
-    } catch (response) {
-      this.notificacoes.notificar(
-        'erro',
-        !response.error?.mensagem
-          ? 'Consulte o log para mais informações'
-          : response.error?.mensagem,
-        response
-      );
-    } finally {
-      this.loader.stop();
-    }
+    }, 1000);
   }
-  ordenar() {
-    this.ordenacao === 'desc'
-      ? (this.ordenacao = 'asc')
-      : (this.ordenacao = 'desc');
+  adicionarAoCarrinho(produto) {
+    this.produtosService.adicionarAoCarrinho(produto);
+  }
+  verProduto(produto) {
+    this.router.navigateByUrl(`/produto/${produto.codigo}`);
   }
 }
