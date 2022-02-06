@@ -1,15 +1,26 @@
 <div class="card-shop">
   <div class="linha">
     <div class="migalha">
-      <p><span class="branco">Home&nbsp;</span> / Product</p>
+      <p>
+        <span class="branco" routerLink="/produtos">Home&nbsp;</span> / Product
+      </p>
     </div>
     <div class="titulo">
       <h1>Product Details</h1>
     </div>
     <div class="detalhes-listagem">
       <p>
-        Next Product <i class="material-icons-outlined">arrow_back</i>
-        <i class="material-icons-outlined">arrow_forward</i>
+        Next Product
+        <i
+          class="material-icons-outlined"
+          [routerLink]="'/produto/' + (produto?.codigo - 1)"
+          >arrow_back</i
+        >
+        <i
+          class="material-icons-outlined"
+          [routerLink]="'/produto/' + (produto?.codigo + 1)"
+          >arrow_forward</i
+        >
       </p>
     </div>
   </div>
@@ -19,7 +30,7 @@
     <div class="esquerda">
       <div class="titulo-produto">
         <h1>
-          <b>Nike Air Max 270 to Chuck Taylors</b>
+          <b>{{ produto?.nome }}</b>
         </h1>
       </div>
       <div class="descricao-produto">
@@ -42,7 +53,7 @@
         <img src="/assets/images/tenis-sem-bg.png" [alt]="'Tenis'" />
       </div>
       <div class="preco-produto">
-        <h4>$231</h4>
+        <h4>${{ produto?.valor }}</h4>
       </div>
     </div>
     <div class="direita">
@@ -55,27 +66,44 @@
             >start_rate</i
           >
         </div>
-        <span>4.5 (6)</span>
+        <span>{{ produto?.avaliacao }} (6)</span>
       </div>
       <div class="cores-produto">
         <span>Color:</span>
-        <div *ngFor="let number of [0, 1, 2, 3]" class="cor-produto"></div>
+        <div
+          *ngFor="let cor of cores"
+          (click)="cor.selecionado = cor.selecionado === false ? true : false"
+          [ngClass]="
+            cor.selecionado === true
+              ? 'cor-produto cor-selecionada'
+              : 'cor-produto'
+          "
+        ></div>
       </div>
       <div class="tamanhos-produto">
         <span>Size:</span>
         <div>
-          <div
-            *ngFor="let number of [37, 38, 39, 40, 41, 42]"
-            class="tamanho-produto"
-          >
-            <div class="opcao" [ngClass]="number === 38 ? 'selecionada' : null">
-              {{ number }}
+          <div *ngFor="let tamanho of tamanhos" class="tamanho-produto">
+            <div
+              class="opcao"
+              (click)="
+                tamanho.selecionado =
+                  tamanho.selecionado === false ? true : false
+              "
+              [ngClass]="tamanho.selecionado === true ? 'selecionada' : null"
+            >
+              {{ tamanho.valor }}
             </div>
           </div>
         </div>
       </div>
       <div class="chamada-produto">
-        <button class="adicionar-ao-carrinho">Add to cart</button>
+        <button
+          class="adicionar-ao-carrinho"
+          (click)="adicionarAoCarrinho(produto)"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   </div>
@@ -85,23 +113,37 @@
     <div class="linha">
       <div class="titulo"><h1>Related Product</h1></div>
     </div>
-    <div class="produto" *ngFor="let number of [1, 2, 3]">
+    <div
+      class="produto"
+      *ngFor="let produtoRelacionado of produtosRelacionados"
+    >
       <div class="acoes">
         <div class="ver">
-          <i class="material-icons-outlined">settings_overscan</i>
+          <i
+            class="material-icons-outlined"
+            (click)="verProduto(produtoRelacionado)"
+            >settings_overscan</i
+          >
         </div>
         <div class="comprar">
-          <i class="material-icons-outlined">shopping_bag</i>
+          <i
+            class="material-icons-outlined"
+            (click)="adicionarAoCarrinho(produtoRelacionado)"
+            >shopping_bag</i
+          >
         </div>
       </div>
-      <div class="img-produto">
-        <img src="/assets/images/tenis.png" [alt]="'Tenis-' + number" />
+      <div class="imagem-produto">
+        <img
+          src="/assets/images/tenis.png"
+          [alt]="'Tenis-' + produtoRelacionado.nome"
+        />
       </div>
       <div class="detalhes-produto">
         <h4>
-          <b>Popular Shoe Trends</b>
+          <b>{{ produtoRelacionado.nome }}</b>
         </h4>
-        <h4>$23{{ number }}</h4>
+        <h4>${{ produtoRelacionado.valor }}</h4>
       </div>
     </div>
   </div>

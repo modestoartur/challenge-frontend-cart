@@ -6,10 +6,12 @@ import { NgModule } from '@angular/core';
 import { RodapeModule } from './rodape/rodape.module';
 import { RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [LayoutComponent],
   imports: [
+    BrowserModule,
     CommonModule,
     RouterModule,
     CabecalhoModule,

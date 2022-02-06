@@ -18,6 +18,9 @@
         font-weight: 400;
         display: flex;
         align-items: center;
+        i {
+          cursor: pointer;
+        }
       }
     }
     .migalha {
@@ -47,7 +50,6 @@ $dot-size: 1px;
 $dot-space: 22px;
 .produto,
 .produto-destaque {
-  cursor: pointer;
   flex: 1 1 auto;
   background: linear-gradient(
         90deg,
@@ -161,6 +163,7 @@ $dot-space: 22px;
     display: flex;
     margin-top: 3em;
     .miniatura-produto {
+      cursor: pointer;
       margin: 0 2%;
       &first-of-type {
         margin-left: 0;
@@ -177,11 +180,13 @@ $dot-space: 22px;
     flex-direction: row;
     margin: 5% auto;
     .cor-produto {
+      cursor: pointer;
       width: 3em;
       height: 3em;
       margin: 0 5%;
       background: blue;
       border-radius: 50%;
+      border: 3px solid transparent;
       &:nth-of-type(1) {
         background: red;
       }
@@ -191,6 +196,9 @@ $dot-space: 22px;
       &:nth-of-type(3) {
         background: brown;
       }
+    }
+    .cor-selecionada {
+      border-color: white;
     }
   }
   .tamanhos-produto {
@@ -203,6 +211,7 @@ $dot-space: 22px;
       flex-wrap: wrap;
       width: fit-content;
       .tamanho-produto {
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
