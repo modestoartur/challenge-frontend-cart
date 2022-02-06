@@ -1,0 +1,202 @@
+html {
+  scroll-behavior: smooth;
+}
+@viewport {
+  width: device-width;
+  zoom: 1.1;
+  min-zoom: 0.4;
+  max-zoom: 2;
+  user-zoom: fixed;
+}
+
+body {
+  min-height: 97vh;
+  margin: 0;
+  border-bottom: none;
+  background: radial-gradient(
+        1.5em 6.28571em at 1.95em,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 55%,
+        rgba(255, 255, 255, 0) 55%
+      )
+      0 0,
+    radial-gradient(
+        1.5em 6.28571em at -0.45em,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 55%,
+        rgba(255, 255, 255, 0) 55%
+      )
+      1.5em 5.5em,
+    radial-gradient(
+        2.3em 4.57143em at 2.99em,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.3) 55%,
+        rgba(255, 255, 255, 0) 55%
+      )
+      0 0,
+    radial-gradient(
+        2.3em 4.57143em at -0.69em,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0.3) 55%,
+        rgba(255, 255, 255, 0) 55%
+      )
+      2.3em 4em,
+    radial-gradient(
+        3.5em 6.28571em at 4.55em,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 55%,
+        rgba(255, 255, 255, 0) 55%
+      )
+      0 0,
+    radial-gradient(
+        3.5em 6.28571em at -1.05em,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 55%,
+        rgba(255, 255, 255, 0) 55%
+      )
+      3.5em 5.5em,
+    radial-gradient(#fdebc1, #fd8d3d);
+  background-color: #fdebc1;
+  background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em,
+    3.5em 11em, 100% 100%;
+  background-repeat: repeat;
+  font-family: 'Roboto';
+  font-display: swap;
+  color: #5d5d5d;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.spn_hol {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background: #fff;
+  cursor: progress;
+  z-index: 50000;
+  opacity: 0.3;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  overflow-y: hidden !important;
+  * {
+    overflow-y: hidden !important;
+  }
+}
+.spinner {
+  position: absolute;
+  top: 50%;
+  margin-top: -12px;
+  left: 50%;
+  margin-left: -35px;
+  height: 24px;
+  width: 70px;
+  text-align: center;
+  display: block;
+  z-index: 999;
+}
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5em;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: #6a5aff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+  font-display: swap;
+}
+.material-icons-regular {
+  font-family: 'Material Icons Regular';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.5em;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+  font-display: swap;
+}
+.mat-badge-content {
+  background: #6a5aff;
+  color: #004800;
+  border-radius: 0.1875em;
+  margin-bottom: -2em;
+  top: 10% !important;
+}
+.branco {
+  color: white;
+}
+p,
+span,
+a {
+  color: black;
+}

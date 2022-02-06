@@ -1,0 +1,83 @@
+$ilegra-primary: (
+  50: #389978,
+  100: #318769,
+  200: #2b745b,
+  300: #24614c,
+  400: #1d4f3e,
+  500: #6a5aff,
+  600: #0f2920,
+  700: #081712,
+  800: #010403,
+  900: #000000,
+  A100: #3fac87,
+  A200: #48bc94,
+  A400: #5bc39f,
+  A700: #000000,
+);
+$ilegra-accent: (
+  50: #e3e8e6,
+  100: #b9c5c1,
+  200: #8b9e97,
+  300: #5c776d,
+  400: #39594e,
+  500: #6a5aff,
+  600: #13362a,
+  700: #102e23,
+  800: #0c271d,
+  900: #061a12,
+  A100: #59ffb1,
+  A200: #26ff9a,
+  A400: #00f281,
+  A700: #00d973,
+);
+$ilegra-theme: mat-light-theme($ilegra-primary, $ilegra-accent);
+@include angular-material-theme($ilegra-theme);
+@mixin snack-theme($ilegra-theme) {
+  .mat-snack-bar-container {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+}
+@include snack-theme($ilegra-theme);
+/*
+  Sistema basico de grid em colunas, semelhante ao bootstrap
+*/
+.col1 {
+  width: 8.333%;
+}
+.col2 {
+  width: 16.6%;
+}
+.col3 {
+  width: 25%;
+}
+.col4 {
+  width: 33.3%;
+}
+.col5 {
+  width: 41.6%;
+}
+.col6 {
+  width: 50%;
+}
+.col7 {
+  width: 58.333%;
+}
+.col8 {
+  width: 58.333%;
+}
+.col9 {
+  width: 75%;
+}
+.col10 {
+  width: 83.2%;
+}
+.col11 {
+  width: 91.667%;
+}
+.col12 {
+  width: 100%;
+}

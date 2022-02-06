@@ -1,0 +1,8 @@
+@import './fonts';
+@import '~@angular/material/theming';
+$typography: mat-typography-config(
+  $input: mat-typography-level(1em, 1.125, 400),
+);
+@include mat-core($typography);
+@import './theme';
+@import './global';

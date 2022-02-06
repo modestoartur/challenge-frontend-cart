@@ -1,0 +1,15 @@
+FROM ubuntu:18.04
+
+RUN apt-get update
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y tzdata
+RUN apt-get install -y python
+
+RUN rm -f /etc/localtime
+RUN echo 'America/Sao_Paulo' > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
+
+RUN echo "10.128.131.117 nexus.viavarejo.com.br" >> /etc/hosts
+COPY dist/ilegra-desafio-front /ilegra-desafio-front
+
+CMD cd /ilegra-desafio-front && python -m SimpleHTTPServer

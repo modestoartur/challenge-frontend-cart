@@ -1,0 +1,69 @@
+.aviso {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1em 2em 1em 1em;
+  box-shadow: 0.25em 0.25em 0.625em rgba(0, 0, 0, 0.15);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+
+  h2,
+  i {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    color: #fcfdfc;
+    text-align: center;
+    font-size: 0.875em;
+    line-height: 1.125em;
+    width: 100%;
+  }
+
+  h2 {
+    min-width: fit-content;
+    margin-right: 2em;
+    font-size: 0.875em;
+  }
+
+  i {
+    margin-right: 0.2em;
+    font-size: 1.5em;
+  }
+}
+
+.erro {
+  background: #b71816;
+
+  h2,
+  i {
+    color: #fcfdfc;
+  }
+}
+
+.sucesso {
+  background: #699f10;
+
+  h2,
+  i {
+    color: #fcfdfc;
+  }
+}
+
+.alerta {
+  background: #d1ab03;
+  h2,
+  i {
+    color: #fcfdfc;
+  }
+}
+
+.icone,
+h2 {
+  display: flex;
+}

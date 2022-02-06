@@ -1,0 +1,12 @@
+FROM ubuntu:18.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y curl
+RUN apt-get install -y tzdata
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get update
+RUN apt-get install -y nodejs
+
+RUN rm -f /etc/localtime
+RUN echo 'America/Sao_Paulo' > /etc/timezone
+RUN dpkg-reconfigure -f noninteractive tzdata
