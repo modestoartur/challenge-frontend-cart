@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Produto from '@app/core/models/produto.model';
+import { CarrinhoService } from '@app/core/services/carrinho.service';
 import { LoaderService } from '@app/core/services/loader.service';
 import { ProdutosService } from '@app/core/services/produtos.service';
 import { NotificacoesService } from '../../../core/services/notificacoes.service';
@@ -32,11 +33,11 @@ export class ProdutosListagemComponent implements OnInit {
     private loader: LoaderService,
     private produtosService: ProdutosService,
     private notificacoes: NotificacoesService,
-    private router: Router
+    private router: Router,
+    private carrinhoService: CarrinhoService
   ) {}
   async ngOnInit() {
     await this.obterProdutos();
-    console.log(this.produtos);
   }
   async obterProdutos(ordenacao = this.ordenacao) {
     try {
@@ -63,7 +64,7 @@ export class ProdutosListagemComponent implements OnInit {
     }, 1000);
   }
   adicionarAoCarrinho(produto) {
-    this.produtosService.adicionarAoCarrinho(produto);
+    this.carrinhoService.adicionarAoCarrinho(produto);
   }
   verProduto(produto) {
     this.router.navigateByUrl(`/produto/${produto.codigo}`);

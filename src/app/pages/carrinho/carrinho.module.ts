@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CoreModule } from '@app/core/core.module';
 import { CarrinhoListagemComponent } from './carrinho-listagem/carrinho-listagem.component';
-import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
+  imports: [CoreModule],
   declarations: [CarrinhoListagemComponent],
-  imports: [BrowserModule, CommonModule],
+  exports: [CarrinhoListagemComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CarrinhoModule {}

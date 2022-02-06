@@ -11,6 +11,7 @@
     width: 100%;
     .migalha,
     .detalhes-listagem {
+      cursor: pointer;
       display: flex;
       width: 20%;
       p {
@@ -118,6 +119,7 @@ $dot-space: 22px;
   .titulo-produto {
     color: #45409c;
     font-size: 18px;
+    cursor: pointer;
   }
   .preco-produto {
     h4 {
@@ -152,4 +154,11 @@ $dot-space: 22px;
       cursor: pointer;
     }
   }
+}
+.carrinho-vazio {
+  letter-spacing: 2px;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  margin: 10% 0;
 }

@@ -3,4 +3,6 @@ export default class Produto {
   nome: string;
   valor: number;
   avaliacao: number;
+  quantidade?: number;
+  total?: number;
 }

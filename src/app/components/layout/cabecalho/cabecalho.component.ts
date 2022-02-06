@@ -1,43 +1,28 @@
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { Permissoes } from '@app/core/models/permissoes.enum';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '@app/core/services/autenticacao.service';
-import { version } from 'process';
-import { Observable } from 'rxjs';
+import { CarrinhoService } from '@app/core/services/carrinho.service';
+import { StorageService } from '../../../core/services/storage.service';
 @Component({
   selector: 'app-cabecalho',
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.scss'],
 })
 export class CabecalhoComponent implements OnInit {
-  public version: string = version;
-  contador;
-  permissoes: typeof Permissoes = Permissoes;
-  idVerificacao: any;
-  pronto = false;
-  @Output() public sidenavToggle = new EventEmitter();
-  isMobile: Observable<BreakpointState> =
-    this.breakpointObserver.observe('(max-width: 768px)');
+  totalCarrinho = 0;
   constructor(
-    private router: Router,
-    public autenticacaoService: AutenticacaoService,
-    public breakpointObserver: BreakpointObserver
+    private storageService: StorageService,
+    private carrinhoService: CarrinhoService
   ) {}
-  ngOnInit() {}
-  onToggleSidenav = () => {
-    this.sidenavToggle.emit();
-  };
-  verificarUrlAtual(link) {
-    link = link.slice(0, -1);
-    return this.router.url.startsWith(link);
-  }
-  ativo(link) {
-    link = link.slice(0, -1);
-    return this.router.url.startsWith(link);
-  }
-  naoAtivo(link) {
-    link = link.slice(0, -1);
-    return !this.router.url.startsWith(link);
+  ngOnInit() {
+    this.carrinhoService.calcularTotal();
+    if ('total' in localStorage) {
+      this.totalCarrinho = Number(localStorage.getItem('total'));
+    }
+    this.storageService.watchStorage().subscribe((key) => {
+      if (key === 'total') {
+        this.totalCarrinho = Number(JSON.parse(localStorage.getItem('total')));
+      }
+    });
   }
 }

@@ -7,6 +7,7 @@ import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes
 @NgModule({
   imports: [CoreModule, MaterialModule],
   declarations: [ProdutosListagemComponent, ProdutosDetalhesComponent],
+  exports: [ProdutosListagemComponent, ProdutosDetalhesComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProdutosModule {}

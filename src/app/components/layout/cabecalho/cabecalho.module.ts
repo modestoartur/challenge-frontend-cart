@@ -1,13 +1,11 @@
-import { CabecalhoComponent } from './cabecalho.component';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from './../../../material.module';
-import { MenuComponent } from './menu/menu.component';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CoreModule } from '../../../core/core.module';
+import { CabecalhoComponent } from './cabecalho.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [CabecalhoComponent, MenuComponent],
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CoreModule],
   exports: [CabecalhoComponent],
 })
 export class CabecalhoModule {}

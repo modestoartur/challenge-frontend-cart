@@ -31,6 +31,10 @@ $ilegra-accent: (
   A700: #00d973,
 );
 $ilegra-theme: mat-light-theme($ilegra-primary, $ilegra-accent);
+$bg-color: #ffe2cd;
+$dot-color: #f8ae7a;
+$dot-size: 1px;
+$dot-space: 22px;
 @include angular-material-theme($ilegra-theme);
 @mixin snack-theme($ilegra-theme) {
   .mat-snack-bar-container {
@@ -98,10 +102,57 @@ mat-select {
   padding: 2% 4%;
 }
 .migalha {
+  color: black;
   p {
-    cursor: pointer;
+    cursor: default;
   }
   span.branco {
-    cursor: default;
+    cursor: pointer;
+  }
+}
+.produtos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .produto {
+    flex: 1 1 auto;
+    background: linear-gradient(
+          90deg,
+          $bg-color ($dot-space - $dot-size),
+          transparent 1%
+        )
+        center,
+      linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+      $dot-color;
+    background-size: $dot-space $dot-space;
+    border-radius: 30px;
+    padding: 2%;
+    min-height: 20em;
+    .acoes {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .imagem-produto {
+      img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+      }
+    }
+    .detalhes-produto {
+      text-align: center;
+      font-size: 1.3em;
+      color: #45409c;
+      h4 {
+        margin: 4%;
+      }
+    }
+    div {
+      i {
+        color: #636363;
+        cursor: pointer;
+      }
+    }
   }
 }
