@@ -15,15 +15,26 @@
   </div>
 </div>
 <div class="linha">
-  <div class="produto-destaque">
+  <div class="destaque">
     <div class="esquerda">
-      <div class="titulo-produto">
-        <h1>
-          <b>Nike Air Max 270 to Chuck Taylors</b>
-        </h1>
-      </div>
-      <div class="descricao-produto">
-        Nike`s air orce 1s were among the most popular sneakers this year.
+      <div *ngFor="let number of [0, 1, 2, 3]" class="produto-carrinho linha">
+        <div class="detalhamento-produto coluna">
+          <div class="titulo-produto">
+            <h1>
+              <b>Nike Air Max 270 to Chuck Taylors</b>
+            </h1>
+          </div>
+          <div class="descricao-produto">
+            Nike`s air orce 1s were among the most popular sneakers this year.
+          </div>
+        </div>
+        <div class="quantidade-produto">
+          <div class="linha">
+            <i class="material-icons-outlined">add_circle_outline</i>
+            <span>{{ 1 }}</span>
+            <i class="material-icons-outlined">remove_circle_outline</i>
+          </div>
+        </div>
       </div>
     </div>
     <div class="direita">
