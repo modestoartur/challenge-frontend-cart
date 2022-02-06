@@ -1,0 +1,32 @@
+<div class="card-shop">
+  <div class="controles">
+    <div class="migalha">
+      <p><span class="branco">Home</span> / Product</p>
+    </div>
+    <div class="titulo">
+      <h1>Shop</h1>
+    </div>
+    <div class="detalhes-listagem"><p>Showing 1-12 of 36 results</p></div>
+  </div>
+</div>
+<div class="produtos">
+  <div class="produto" *ngFor="let number of [0, 1, 2, 3, 4, 5, 6, 7, 8]">
+    <div class="acoes">
+      <div class="ver">
+        <i class="material-icons-outlined">settings_overscan</i>
+      </div>
+      <div class="comprar">
+        <i class="material-icons-outlined">shopping_bag</i>
+      </div>
+    </div>
+    <div class="imagem-produto">
+      <img src="/assets/images/tenis.png" [alt]="'Tenis-' + number" />
+    </div>
+    <div class="detalhes-produto">
+      <h4>
+        <b>Popular Shoe Trends</b>
+      </h4>
+      <h4>$23{{ number }}</h4>
+    </div>
+  </div>
+</div>
