@@ -15,12 +15,12 @@ jobs:
       - name: 👷 Preparando o Node
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '17.4.0'
 
       - name: 🔨 Construindo...
         run: |
           npm install
-          npm run build
+          npm run postinstall
 
       - name: 📂 Sincronizando os arquivos
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
