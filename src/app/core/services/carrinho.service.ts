@@ -1,38 +1,34 @@
 import { Injectable } from '@angular/core';
+import Produto from '../models/produto.model';
 import { NotificacoesService } from './notificacoes.service';
 import { StorageService } from './storage.service';
 @Injectable({
   providedIn: 'root',
 })
 export class CarrinhoService {
+  cesta: Array<Produto>;
   constructor(
     private notificacoes: NotificacoesService,
     private storageService: StorageService
-  ) {}
+  ) {
+    if ('carrinho' in localStorage) {
+      this.cesta = JSON.parse(localStorage.getItem('carrinho'));
+    }
+  }
   adicionarAoCarrinho(produto) {
     if (!produto.quantidade) produto.quantidade = 1;
     let cesta = [];
     if ('carrinho' in localStorage) {
       cesta = JSON.parse(localStorage.getItem('carrinho'));
-      if (cesta.find((p) => p.codigo === produto.codigo) === undefined) {
-        cesta.push(produto);
-        this.storageService.setItem('carrinho', JSON.stringify(cesta));
-        this.calcularTotal();
-        this.notificacoes.notificar(
-          'sucesso',
-          'Produto adicionado ao carrinho.'
-        );
-      } else {
-        this.notificacoes.notificar(
-          'alerta',
-          'Produto já foi adicionado ao carrinho.'
-        );
-      }
-    } else {
-      this.storageService.setItem('carrinho', JSON.stringify([produto]));
-      this.calcularTotal();
-      this.notificacoes.notificar('sucesso', 'Produto adicionado ao carrinho.');
+      const indice = cesta.findIndex(
+        (produtoCesta) => produtoCesta.id === produto.id
+      );
+      console.log(produto, cesta, indice);
+      indice > -1 ? cesta[indice].quantidade++ : cesta.push(produto);
     }
+    this.storageService.setItem('carrinho', JSON.stringify(cesta));
+    this.calcularTotal();
+    this.notificacoes.notificar('sucesso', 'Produto adicionado ao carrinho.');
   }
   calcularTotal() {
     let soma = 0;
