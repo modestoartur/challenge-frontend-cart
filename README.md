@@ -2,10 +2,9 @@
 
 # ILEGRA DESAFIO FRONT
 
-## Online Links com CI
+## CI-1: https://ilegra-desafio-front.herokuapp.com/
 
-https://ilegra-desafio-front.herokuapp.com/
-http://191.252.143.174/~ilegra/
+## CI-2: http://191.252.143.174/~ilegra/
 
 ## Inicio rapido
 
