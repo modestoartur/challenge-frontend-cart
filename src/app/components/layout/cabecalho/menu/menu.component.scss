@@ -17,3 +17,11 @@ nav {
 .ativo {
   color: #ff6d05;
 }
+@media all and (max-width: 767px) {
+  nav ul,
+  .carrinho > span,
+  .migalha,
+  .detalhes-listagem {
+    display: none;
+  }
+}

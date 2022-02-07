@@ -29,6 +29,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/desafio-front/
+          server-dir: /storage/ssd3/400/18416400
           exclude: |
             **/.git*
             **/.git*/**
