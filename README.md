@@ -1,5 +1,5 @@
 [<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=2b9348">](https://github.com/modestoartur/ilegra-desafio-front/blob/master/.github/workflows/main.yml)
-[![Heroku](https://github.com/modestoartur/ilegra-desafio-front/blob/master/package.json)]
+[![Heroku CI Status](https://ilegra-desafio-front.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/596e53a6-7f59-434a-a34c-42954bb5bee3/tests)
 
 # ILEGRA DESAFIO FRONT
 
