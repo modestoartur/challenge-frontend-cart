@@ -5,7 +5,7 @@
 
 ## CI-1: https://ilegra-desafio-front.herokuapp.com/
 
-## CI-2 (OFF por falta de dominio): https://ilegra.000webhostapp.com/
+## CI-2: https://ilegra.000webhostapp.com/
 
 ## Inicio rapido
 
