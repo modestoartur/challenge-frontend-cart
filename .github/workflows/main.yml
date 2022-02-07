@@ -12,11 +12,26 @@ jobs:
       - name: 🚚 Pegando o ultimo codigo
         uses: actions/checkout@v2
 
+      - name: 👷 Preparando o Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: 🔨 Construindo...
+        run: |
+          npm install
+          npm run build
+
       - name: 📂 Sincronizando os arquivos
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
         with:
           server: ${{ secrets.FTP_SERVER_IP }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          local-dir: dist/
           server-dir: public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/cypress/**
