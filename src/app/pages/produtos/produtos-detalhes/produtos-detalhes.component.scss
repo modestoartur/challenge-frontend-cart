@@ -272,10 +272,24 @@ $dot-space: 22px;
     padding: 11% 8%;
     .produto {
       width: 100%;
+      padding: 10%;
+      margin: 2.5% 0;
     }
   }
-  .migalha,
-  .detalhes-listagem {
-    display: none;
+  .card-shop > .linha > .titulo {
+    width: 100%;
+  }
+  .card-shop > .linha > .migalha,
+  .card-shop > .linha > .detalhes-listagem {
+    display: none !important;
+  }
+  .produto-destaque {
+    flex-direction: column;
+    margin-top: -95%;
+  }
+  .esquerda,
+  .meio,
+  .direita {
+    width: 100% !important;
   }
 }
