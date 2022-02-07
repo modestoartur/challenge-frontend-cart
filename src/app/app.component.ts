@@ -19,7 +19,6 @@ import { CarrinhoService } from './core/services/carrinho.service';
     ]),
   ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(public loader: LoaderService) {}
-  ngOnInit() {}
 }

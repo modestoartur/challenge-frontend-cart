@@ -1,24 +1,33 @@
 import { TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { createSpyObj } from 'jest-createspyobj';
 import { NotificacoesService } from './notificacoes.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('NotificacoesService', () => {
   let service: NotificacoesService;
+  let fakeNotificacao: jest.Mocked<MatSnackBar>;
 
-  beforeEach(() => {
-    const matSnackBarStub = () => ({
-      openFromComponent: (avisoComponent, object) => ({})
-    });
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    fakeNotificacao = createSpyObj<MatSnackBar>(MatSnackBar, ['openFromComponent']);
+
+    await TestBed.configureTestingModule({
       providers: [
-        NotificacoesService,
-        { provide: MatSnackBar, useFactory: matSnackBarStub }
+        { provide: MatSnackBar, useFactory: () => fakeNotificacao },
+        NotificacoesService
       ]
     });
     service = TestBed.inject(NotificacoesService);
   });
 
-  it('can load instance', () => {
+  it('should create', () => {
     expect(service).toBeTruthy();
   });
+
+  describe('METHOD: notificar', () => {
+    it.skip('NOT IMPLEMENTED: should do something', () => {
+      // TODO implement test
+      // service.notificar();
+    });
+  });
+
 });

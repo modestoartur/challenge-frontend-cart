@@ -1,0 +1,22 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Pegando o ultimo codigo
+        uses: actions/checkout@v2
+
+      - name: 📂 Sincronizando os arquivos
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ${{ secrets.FTP_SERVER_IP }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          server-dir: public_html/

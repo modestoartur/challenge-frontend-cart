@@ -1,29 +1,38 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
-import { version } from '../../../../../package.json';
+import { createSpyObj } from 'jest-createspyobj';
 import { RodapeComponent } from './rodape.component';
+import { Router } from '@angular/router';
 
 describe('RodapeComponent', () => {
   let component: RodapeComponent;
   let fixture: ComponentFixture<RodapeComponent>;
+  let fakeRouter: jest.Mocked<Router>;
+
+  beforeEach(async () => {
+    fakeRouter = createSpyObj<Router>(Router, []);
+
+    await TestBed.configureTestingModule({
+      declarations: [RodapeComponent],
+      providers: [
+        { provide: Router, useFactory: () => fakeRouter },
+      ]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    const routerStub = () => ({ url: { startsWith: () => ({}) } });
-    TestBed.configureTestingModule({
-      schemas: [NO_ERRORS_SCHEMA],
-      declarations: [RodapeComponent],
-      providers: [{ provide: Router, useFactory: routerStub }]
-    });
     fixture = TestBed.createComponent(RodapeComponent);
     component = fixture.componentInstance;
   });
 
-  it('can load instance', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`version has default value`, () => {
-    expect(component.version).toEqual(version);
+  describe('METHOD: naoAtivo', () => {
+    it.skip('NOT IMPLEMENTED: should do something', () => {
+      // TODO implement test
+      // component.naoAtivo();
+    });
   });
+
 });
