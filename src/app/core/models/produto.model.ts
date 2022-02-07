@@ -5,4 +5,6 @@ export default class Produto {
   avaliacao: number;
   quantidade?: number;
   total?: number;
+  cor?: string;
+  tamanho?: number;
 }

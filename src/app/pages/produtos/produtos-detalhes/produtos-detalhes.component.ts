@@ -80,7 +80,6 @@ export class ProdutosDetalhesComponent implements OnInit {
     try {
       const data = await this.produtosService.obterProduto(Number(codigo));
       this.produto = data;
-      console.log(this.produto);
     } catch (response) {
       this.notificacoes.notificar(
         'erro',
@@ -94,6 +93,12 @@ export class ProdutosDetalhesComponent implements OnInit {
     }
   }
   adicionarAoCarrinho(produto) {
+    const corSelecionada = this.cores.find((cor) => cor.selecionado);
+    const tamanhoSelecionado = this.tamanhos.find(
+      (tamanho) => tamanho.selecionado
+    );
+    produto.cor = corSelecionada.valor;
+    produto.tamanho = tamanhoSelecionado.valor;
     this.carrinhoService.adicionarAoCarrinho(produto);
   }
   verProduto(produto) {
