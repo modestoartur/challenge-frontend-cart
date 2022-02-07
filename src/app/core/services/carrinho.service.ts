@@ -15,17 +15,16 @@ export class CarrinhoService {
       this.cesta = JSON.parse(localStorage.getItem('carrinho'));
     }
   }
-  adicionarAoCarrinho(produto) {
+  adicionarAoCarrinho(produto: Produto) {
+    let cesta: Array<Produto>;
     if (!produto.quantidade) produto.quantidade = 1;
-    let cesta = [];
-    if ('carrinho' in localStorage) {
-      cesta = JSON.parse(localStorage.getItem('carrinho'));
-      const indice = cesta.findIndex(
-        (produtoCesta) => produtoCesta.id === produto.id
-      );
-      console.log(produto, cesta, indice);
-      indice > -1 ? cesta[indice].quantidade++ : cesta.push(produto);
-    }
+    cesta =
+      'carrinho' in localStorage
+        ? (cesta = JSON.parse(localStorage.getItem('carrinho')))
+        : (cesta = []);
+    const indice: number = cesta.findIndex((p) => p.codigo === produto.codigo);
+    indice === -1 ? cesta.push(produto) : cesta[indice].quantidade++;
+    console.log(cesta);
     this.storageService.setItem('carrinho', JSON.stringify(cesta));
     this.calcularTotal();
     this.notificacoes.notificar('sucesso', 'Produto adicionado ao carrinho.');
