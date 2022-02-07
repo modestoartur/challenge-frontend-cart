@@ -1,0 +1,9 @@
+# Este arquivo é usado pelo sistema de compilação para ajustar a saída CSS e JS para suportar os navegadores abaixo.
+# Para obter informações adicionais sobre as opções de formato e regras, consulte:
+# Informações: https://github.com/browserslist/browserslist#queries
+
+defaults
+> 1%
+maintained node versions
+not IE 11
+not dead
