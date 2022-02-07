@@ -1,34 +1,49 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { AutenticacaoService } from '@app/core/services/autenticacao.service';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { createSpyObj } from 'jest-createspyobj';
 import { LayoutComponent } from './layout.component';
+import { Router } from '@angular/router';
+import { AutenticacaoService } from '@app/core/services/autenticacao.service';
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
   let fixture: ComponentFixture<LayoutComponent>;
+  let fakeRouter: jest.Mocked<Router>;
+  let fakeAutenticacaoService: jest.Mocked<AutenticacaoService>;
 
-  beforeEach(() => {
-    const autenticacaoServiceStub = () => ({});
-    const routerStub = () => ({
-      events: { subscribe: f => f({}) },
-      url: { startsWith: () => ({}) }
-    });
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      schemas: [NO_ERRORS_SCHEMA],
+  beforeEach(async () => {
+    fakeRouter = createSpyObj<Router>(Router, []);
+    fakeAutenticacaoService = createSpyObj<AutenticacaoService>(AutenticacaoService, []);
+
+    await TestBed.configureTestingModule({
       declarations: [LayoutComponent],
       providers: [
-        { provide: AutenticacaoService, useFactory: autenticacaoServiceStub },
-        { provide: Router, useFactory: routerStub }
+        { provide: Router, useFactory: () => fakeRouter },
+        { provide: AutenticacaoService, useFactory: () => fakeAutenticacaoService },
       ]
-    });
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
   });
 
-  it('can load instance', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('METHOD: ngOnInit', () => {
+    it.skip('NOT IMPLEMENTED: should do something', () => {
+      // TODO implement test
+      // component.ngOnInit();
+    });
+  });
+
+  describe('METHOD: verificarLinkAtivo', () => {
+    it.skip('NOT IMPLEMENTED: should do something', () => {
+      // TODO implement test
+      // component.verificarLinkAtivo();
+    });
+  });
+
 });

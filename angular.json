@@ -20,7 +20,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsconfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
               "src/favicon.png",
@@ -92,8 +92,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
+            "tsconfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -105,9 +104,9 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
+            "tsconfig": [
               "tsconfig.app.json",
-              "tsconfig.spec.json",
+              "tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

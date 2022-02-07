@@ -1,46 +1,42 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { AutenticacaoService } from '@app/core/services/autenticacao.service';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { Router } from '@angular/router';
-import { version } from 'process';
-import { Permissoes } from '@app/core/structs/permissoes.enum';
+import { createSpyObj } from 'jest-createspyobj';
 import { CabecalhoComponent } from './cabecalho.component';
+import { CarrinhoService } from '@app/core/services/carrinho.service';
+import { StorageService } from '../../../core/services/storage.service';
 
 describe('CabecalhoComponent', () => {
   let component: CabecalhoComponent;
   let fixture: ComponentFixture<CabecalhoComponent>;
+  let fakeStorageService: jest.Mocked<StorageService>;
+  let fakeCarrinhoService: jest.Mocked<CarrinhoService>;
 
-  beforeEach(() => {
-    const autenticacaoServiceStub = () => ({});
-    const breakpointObserverStub = () => ({});
-    const routerStub = () => ({ url: { startsWith: () => ({}) } });
-    TestBed.configureTestingModule({
-      schemas: [NO_ERRORS_SCHEMA],
+  beforeEach(async () => {
+    fakeStorageService = createSpyObj<StorageService>(StorageService, ['watchStorage']);
+    fakeCarrinhoService = createSpyObj<CarrinhoService>(CarrinhoService, ['calcularTotal']);
+
+    await TestBed.configureTestingModule({
       declarations: [CabecalhoComponent],
       providers: [
-        { provide: AutenticacaoService, useFactory: autenticacaoServiceStub },
-        { provide: BreakpointObserver, useFactory: breakpointObserverStub },
-        { provide: Router, useFactory: routerStub }
+        { provide: StorageService, useFactory: () => fakeStorageService },
+        { provide: CarrinhoService, useFactory: () => fakeCarrinhoService },
       ]
-    });
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(CabecalhoComponent);
     component = fixture.componentInstance;
   });
 
-  it('can load instance', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`version has default value`, () => {
-    expect(component.version).toEqual(version);
+  describe('METHOD: ngOnInit', () => {
+    it.skip('NOT IMPLEMENTED: should do something', () => {
+      // TODO implement test
+      // component.ngOnInit();
+    });
   });
 
-  it(`permissoes has default value`, () => {
-    expect(component.permissoes).toEqual(Permissoes);
-  });
-
-  it(`pronto has default value`, () => {
-    expect(component.pronto).toEqual(false);
-  });
 });

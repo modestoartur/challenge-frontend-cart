@@ -1,60 +1,42 @@
-import { Overlay } from '@angular/cdk/overlay';
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { RouterTestingModule } from '@angular/router/testing';
-import {
-  MsalBroadcastService,
-  MsalService,
-  MSAL_GUARD_CONFIG,
-  MSAL_INSTANCE,
-} from '@azure/msal-angular';
-import {
-  MSALGuardConfigFactory,
-  MSALInstanceFactory,
-} from 'src/app/app.module';
+import { createSpyObj } from 'jest-createspyobj';
 import { AvisoComponent } from './aviso.component';
-describe('AvisoComponent - ', () => {
+import { DOCUMENT } from '@angular/common';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+
+describe('AvisoComponent', () => {
   let component: AvisoComponent;
   let fixture: ComponentFixture<AvisoComponent>;
+  let fakeData: any;
+  let fakeDocument: jest.Mocked<Document>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientModule],
+  beforeEach(async () => {
+    fakeData = {} as any;
+    fakeDocument = createSpyObj<Document>(Document, []);
+
+    await TestBed.configureTestingModule({
       declarations: [AvisoComponent],
       providers: [
-        MsalService,
-        {
-          provide: MSAL_INSTANCE,
-          useFactory: MSALInstanceFactory,
-        },
-        {
-          provide: MSAL_GUARD_CONFIG,
-          useFactory: MSALGuardConfigFactory,
-        },
-        MatSnackBar,
-        MsalBroadcastService,
-        Overlay,
-      ],
+        { provide: MAT_SNACK_BAR_DATA, useValue: fakeData },
+        { provide: DOCUMENT, useFactory: () => fakeDocument },
+      ]
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AvisoComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('Deveria rodar #constructor()', async () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Deveria rodar #ngOnInit()', async () => {
-    component.ngOnInit();
-    // expect(component.document.querySelector).toHaveBeenCalled();
+  describe('METHOD: obterIcone', () => {
+    it.skip('NOT IMPLEMENTED: should do something', () => {
+      // TODO implement test
+      // component.obterIcone();
+    });
   });
 
-  it('Deveria rodar #ngOnDestroy()', async () => {
-    component.ngOnDestroy();
-  });
 });
