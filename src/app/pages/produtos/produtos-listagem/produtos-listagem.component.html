@@ -41,7 +41,7 @@
         >
       </div>
     </div>
-    <div class="imagem-produto">
+    <div class="imagem-produto" (click)="verProduto(produto)">
       <img src="/assets/images/tenis.png" [alt]="'Tenis-' + produto.nome" />
     </div>
     <div class="detalhes-produto">

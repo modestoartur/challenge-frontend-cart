@@ -130,12 +130,12 @@
         <div class="comprar">
           <i
             class="material-icons-outlined"
-            (click)="adicionarAoCarrinho(produtoRelacionado)"
+            (click)="adicionarAoCarrinho(produtoRelacionado, true)"
             >shopping_bag</i
           >
         </div>
       </div>
-      <div class="imagem-produto">
+      <div class="imagem-produto" (click)="verProduto(produtoRelacionado)">
         <img
           src="/assets/images/tenis.png"
           [alt]="'Tenis-' + produtoRelacionado.nome"
