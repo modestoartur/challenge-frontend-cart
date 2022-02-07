@@ -1,10 +1,11 @@
-[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=2b9348">](https://github.com/SamKirkland/FTP-Deploy-Action)
+[<img alt="Deployed with FTP Deploy Action" src="https://img.shields.io/badge/Deployed With-FTP DEPLOY ACTION-%3CCOLOR%3E?style=for-the-badge&color=2b9348">](https://github.com/modestoartur/ilegra-desafio-front/blob/master/.github/workflows/main.yml)
+[![Heroku](https://github.com/modestoartur/ilegra-desafio-front/blob/master/package.json)]
 
 # ILEGRA DESAFIO FRONT
 
 ## CI-1: https://ilegra-desafio-front.herokuapp.com/
 
-## CI-2: http://191.252.143.174/~ilegra/
+## CI-2 (OFF por falta de dominio): https://ilegra.000webhostapp.com/
 
 ## Inicio rapido
 

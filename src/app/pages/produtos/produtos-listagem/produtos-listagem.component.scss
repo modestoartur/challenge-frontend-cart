@@ -73,6 +73,7 @@ $dot-space: 22px;
     }
   }
 }
+
 @media all and (min-width: 768px) {
   .produtos {
     padding: 4% 8%;
@@ -89,6 +90,12 @@ $dot-space: 22px;
     margin-top: -90%;
     .produto {
       width: 100%;
+      padding: 10%;
+      margin: 2.5% 0;
     }
+  }
+  .titulo {
+    width: 100%;
+    text-align: center;
   }
 }
