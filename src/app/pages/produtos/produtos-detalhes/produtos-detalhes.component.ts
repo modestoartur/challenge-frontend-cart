@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Produto from '@app/core/models/produto.model';
 import { CarrinhoService } from '@app/core/services/carrinho.service';
@@ -11,7 +11,7 @@ import { LoaderService } from '../../../core/services/loader.service';
   templateUrl: './produtos-detalhes.component.html',
   styleUrls: ['./produtos-detalhes.component.scss'],
 })
-export class ProdutosDetalhesComponent implements OnInit {
+export class ProdutosDetalhesComponent implements OnInit, OnDestroy {
   produtos: Array<Produto>;
   produtosRelacionados: Array<Produto>;
   produto: Produto;
@@ -72,7 +72,6 @@ export class ProdutosDetalhesComponent implements OnInit {
     this.obterProdutosRelacionados();
     this.routeSub = this.route.params.subscribe(async (params) => {
       const codigo = Number(params.id);
-
       if (codigo > 0) this.obterProduto(codigo);
     });
   }
@@ -92,13 +91,15 @@ export class ProdutosDetalhesComponent implements OnInit {
       this.loader.stop();
     }
   }
-  adicionarAoCarrinho(produto) {
-    const corSelecionada = this.cores.find((cor) => cor.selecionado);
-    const tamanhoSelecionado = this.tamanhos.find(
-      (tamanho) => tamanho.selecionado
-    );
-    produto.cor = corSelecionada.valor;
-    produto.tamanho = tamanhoSelecionado.valor;
+  adicionarAoCarrinho(produto, produtoRelacionado: boolean = false) {
+    if (produtoRelacionado === false) {
+      const corSelecionada = this.cores.find((cor) => cor.selecionado);
+      const tamanhoSelecionado = this.tamanhos.find(
+        (tamanho) => tamanho.selecionado
+      );
+      produto.cor = corSelecionada.valor;
+      produto.tamanho = tamanhoSelecionado.valor;
+    }
     this.carrinhoService.adicionarAoCarrinho(produto);
   }
   verProduto(produto) {
@@ -107,5 +108,8 @@ export class ProdutosDetalhesComponent implements OnInit {
   async obterProdutosRelacionados() {
     const produtos = await this.produtosService.obterVarios();
     this.produtosRelacionados = produtos.splice(0, 3);
+  }
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 }

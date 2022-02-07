@@ -24,7 +24,6 @@ export class CarrinhoService {
         : (cesta = []);
     const indice: number = cesta.findIndex((p) => p.codigo === produto.codigo);
     indice === -1 ? cesta.push(produto) : cesta[indice].quantidade++;
-    console.log(cesta);
     this.storageService.setItem('carrinho', JSON.stringify(cesta));
     this.calcularTotal();
     this.notificacoes.notificar('sucesso', 'Produto adicionado ao carrinho.');

@@ -44,6 +44,7 @@ const isIframe = window !== window.parent && !window.opener;
   imports: [
     RouterModule.forRoot(routes, {
       useHash: true,
+      scrollPositionRestoration: 'enabled',
       initialNavigation: !isIframe ? 'enabled' : 'disabled', // Não permite que a nvegação inicial seja feita por iFrame
     }),
   ],
