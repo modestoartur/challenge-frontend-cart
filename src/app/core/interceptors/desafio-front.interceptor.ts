@@ -13,7 +13,6 @@ export class AuthInterceptor {
         Authorization: `Bearer ${localStorage.getItem('msal.idtoken')}`,
       },
     });
-
     return next.handle(req);
   }
 }

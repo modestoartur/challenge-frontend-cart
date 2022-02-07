@@ -15,17 +15,28 @@ export class CarrinhoListagemComponent implements OnInit {
     private storageService: StorageService,
     public carrinhoService: CarrinhoService
   ) {}
+  /**
+   * @description Inicia o component do carrinho com o itens cacheados e calcula seu total
+   */
   ngOnInit(): void {
     if ('carrinho' in localStorage) {
       this.cesta = JSON.parse(localStorage.getItem('carrinho'));
       this.carrinhoService.calcularTotal();
     }
   }
+  /**
+   * Aumenta a quantidade de um item do carrinho
+   * @param produto Produto a ser aumentado a quantidade
+   */
   aumentarQuantidade(produto: Produto) {
     const indice = this.cesta.indexOf(produto);
     this.cesta[indice].quantidade++;
     this.atualizarCache();
   }
+  /**
+   * Diminui a quantidade de um item do carrinho
+   * @param produto Produto a ser diminuido a quantidade
+   */
   diminuirQuantidade(produto: Produto) {
     const indice = this.cesta.indexOf(produto);
     if (produto.quantidade > 1) {
@@ -35,6 +46,9 @@ export class CarrinhoListagemComponent implements OnInit {
     }
     this.atualizarCache();
   }
+  /**
+   * Atualiza o cache do do carrinho localStorage e recalcula o total
+   */
   atualizarCache() {
     this.storageService.setItem('carrinho', JSON.stringify(this.cesta));
     this.carrinhoService.calcularTotal();

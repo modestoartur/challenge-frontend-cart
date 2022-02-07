@@ -15,6 +15,10 @@ export class CarrinhoService {
       this.cesta = JSON.parse(localStorage.getItem('carrinho'));
     }
   }
+  /**
+   * Adiciona um produto ao carrinho
+   * @param produto Produto a ser adicionado ao carrinho
+   */
   adicionarAoCarrinho(produto: Produto) {
     let cesta: Array<Produto>;
     if (!produto.quantidade) produto.quantidade = 1;
@@ -28,6 +32,10 @@ export class CarrinhoService {
     this.calcularTotal();
     this.notificacoes.notificar('sucesso', 'Produto adicionado ao carrinho.');
   }
+  /**
+   * Calcula o total do carrinho
+   * @returns Retorna o total do carrinho
+   */
   calcularTotal() {
     let soma = 0;
     let cesta = [];

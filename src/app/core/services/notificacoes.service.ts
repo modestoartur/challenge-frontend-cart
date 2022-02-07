@@ -7,13 +7,15 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 })
 export class NotificacoesService {
   constructor(public notificacao: MatSnackBar) {}
-
+  /**
+   * Exibe uma notificação de acordo com o tipo e mensagem
+   */
   notificar(
     tipo,
     msg,
     error?,
     scrollTop: boolean = false,
-    tempo?,
+    tempo?
   ): MatSnackBarRef<AvisoComponent> {
     if (scrollTop) window.scroll(0, 0);
     if (tipo === 'erro' && error)

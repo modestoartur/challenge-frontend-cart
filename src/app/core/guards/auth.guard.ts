@@ -14,6 +14,11 @@ export class AuthGuard implements CanActivate {
     public loader: LoaderService,
     public notificacao: NotificacoesService
   ) {}
+  /**
+   * Verifica se o usuário está apto a acessar a rota
+   * @param route Rota a ser acessada
+   * @returns True ou False
+   */
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     const observavel: Observable<boolean> = new Observable((observer): any => {
       if (this.autenticacaoService.estaLogado() === true) {
