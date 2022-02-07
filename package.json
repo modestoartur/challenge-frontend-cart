@@ -9,10 +9,10 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "postinstall": "ng build --aot --prod",
+    "postinstall": "ng build --aot --configuration production",
     "dev": "ng serve",
     "lint": "ng lint --fix",
-    "build": "ng build --configuration production && cp package.json dist/desafio-front/package.json",
+    "build": "ng build --configuration production --aot && cp package.json dist/desafio-front/package.json",
     "build:ci": "npm run build",
     "build:stats": "ng build --stats-json",
     "test:unit": "ng test",
@@ -39,6 +39,7 @@
     "core-js": "^3.4.0",
     "express": "^4.17.2",
     "moment": "^2.29.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "rxjs-compat": "~6.5.4",
     "tslib": "^1.10.0",
@@ -66,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
     "cypress": "7.5.0",
+    "enhanced-resolve": "^3.3.0",
     "eslint": "^8.2.0",
     "jasmine-spec-reporter": "~7.0.0",
     "jest": "^27.0.3",
@@ -80,7 +82,7 @@
     "singleQuote": true
   },
   "engines": {
-    "node": "12.20.x",
-    "npm": "6.4.1"
+    "node": "17.4.0",
+    "npm": "8.4.1"
   }
 }
