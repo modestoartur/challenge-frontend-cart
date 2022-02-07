@@ -35,14 +35,14 @@
           <div class="linha">
             <i
               class="material-icons-outlined"
-              (click)="aumentarQuantidade(produto)"
-              >add_circle_outline</i
+              (click)="diminuirQuantidade(produto)"
+              >remove_circle_outline</i
             >
             <span>{{ produto?.quantidade }}</span>
             <i
               class="material-icons-outlined"
-              (click)="diminuirQuantidade(produto)"
-              >remove_circle_outline</i
+              (click)="aumentarQuantidade(produto)"
+              >add_circle_outline</i
             >
           </div>
         </div>
