@@ -1,12 +1,6 @@
-import {
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit
-  } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-
 @Component({
   selector: 'app-aviso',
   templateUrl: './aviso.component.html',
@@ -15,9 +9,12 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 export class AvisoComponent {
   constructor(
     @Inject(MAT_SNACK_BAR_DATA) public data: any,
-    @Inject(DOCUMENT) public document: Document,
+    @Inject(DOCUMENT) public document: Document
   ) {}
-
+  /**
+   * Obtem o icone de acordo com o tipo
+   * @returns string o icone do material
+   */
   obterIcone(): string {
     switch (this.data.tipo) {
       case 'sucesso':

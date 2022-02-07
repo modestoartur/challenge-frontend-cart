@@ -68,6 +68,11 @@ export class ProdutosDetalhesComponent implements OnInit, OnDestroy {
     private router: Router,
     private carrinhoService: CarrinhoService
   ) {}
+  /**
+   * Método responsável por inicializar o componente obtendo os produtos
+   * relacionados e se inscrevendo para qualquer mudanca no id da url
+   * assim como obter o produto da url em questao
+   */
   async ngOnInit() {
     this.obterProdutosRelacionados();
     this.routeSub = this.route.params.subscribe(async (params) => {
@@ -75,6 +80,10 @@ export class ProdutosDetalhesComponent implements OnInit, OnDestroy {
       if (codigo > 0) this.obterProduto(codigo);
     });
   }
+  /**
+   * Obtem um produto pelo seu codigo
+   * @param codigo Codigo do produto que sera detalhado
+   */
   async obterProduto(codigo = this.produto.codigo) {
     try {
       const data = await this.produtosService.obterProduto(Number(codigo));
@@ -91,6 +100,11 @@ export class ProdutosDetalhesComponent implements OnInit, OnDestroy {
       this.loader.stop();
     }
   }
+  /**
+   * Adiciona um produto ao carrinho
+   * @param produto Produto que sera adicionado ao carrinho
+   * @param produtoRelacionado Se ele é um produto relacionado ou nao
+   */
   adicionarAoCarrinho(produto, produtoRelacionado: boolean = false) {
     if (produtoRelacionado === false) {
       const corSelecionada = this.cores.find((cor) => cor.selecionado);
@@ -102,13 +116,23 @@ export class ProdutosDetalhesComponent implements OnInit, OnDestroy {
     }
     this.carrinhoService.adicionarAoCarrinho(produto);
   }
+  /**
+   * Detalha um produto que deseja ser visto com mais detalhes
+   * @param produto Produto a ser visualizado
+   */
   verProduto(produto) {
     this.router.navigateByUrl(`/produto/${produto.codigo}`);
   }
+  /**
+   * Obtem os produtos relacionados ao produto em questao
+   */
   async obterProdutosRelacionados() {
     const produtos = await this.produtosService.obterVarios();
     this.produtosRelacionados = produtos.splice(0, 3);
   }
+  /**
+   * Método responsável por desinscrever o componente do evento de mudança de rota
+   */
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }

@@ -14,6 +14,10 @@ export class CabecalhoComponent implements OnInit {
     private storageService: StorageService,
     private carrinhoService: CarrinhoService
   ) {}
+  /**
+   * Ao iniciar o componente, obtem o total do carrinho
+   * e assina para o evento de mudança de total
+   */
   ngOnInit() {
     this.carrinhoService.calcularTotal();
     if ('total' in localStorage) {

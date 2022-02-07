@@ -45,6 +45,11 @@ export class ProdutosService {
     },
   ];
   constructor() {}
+  /**
+   * Obtem varios os produtos
+   * @param ordenacao Tipo de ordenacao desejada
+   * @returns Array de produtos
+   */
   async obterVarios(ordenacao = 'avaliacoes'): Promise<any[]> {
     let parametros = new HttpParams();
     parametros = parametros.append('sort_order', ordenacao);
@@ -175,6 +180,11 @@ export class ProdutosService {
         return mockOrdenadoPorAvaliacao;
     }
   }
+  /**
+   * Obtem um produto
+   * @param codigo Codigo do produto
+   * @returns O produto
+   */
   obterProduto(codigo: number) {
     const produto = this.mockProdutos.find((p) => p.codigo === codigo);
     return produto;

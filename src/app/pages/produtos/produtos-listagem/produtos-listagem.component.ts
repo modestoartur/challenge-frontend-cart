@@ -36,9 +36,16 @@ export class ProdutosListagemComponent implements OnInit {
     private router: Router,
     private carrinhoService: CarrinhoService
   ) {}
+  /**
+   * Ao iniciar o componente, obtem os produtos
+   */
   async ngOnInit() {
     await this.obterProdutos();
   }
+  /**
+   * Obtem os produtos pela ordenação
+   * @param ordenacao O tipo de ordenacao desejada
+   */
   async obterProdutos(ordenacao = this.ordenacao) {
     try {
       const data = await this.produtosService.obterVarios(ordenacao);
@@ -55,6 +62,10 @@ export class ProdutosListagemComponent implements OnInit {
       this.loader.stop();
     }
   }
+  /**
+   * Ordena os produtos
+   * @param tipo Tipo de ordenação
+   */
   ordenar(tipo) {
     this.loader.start();
     this.ordenacao = tipo;
@@ -63,9 +74,17 @@ export class ProdutosListagemComponent implements OnInit {
       this.loader.stop();
     }, 1000);
   }
+  /**
+   * Adiciona um produto ao carrinho
+   * @param produto Produto que sera adicionado ao carrinho
+   */
   adicionarAoCarrinho(produto) {
     this.carrinhoService.adicionarAoCarrinho(produto);
   }
+  /**
+   * Detalha um produto que deseja ser visto com mais detalhes
+   * @param produto Produto a ser visualizado
+   */
   verProduto(produto) {
     this.router.navigateByUrl(`/produto/${produto.codigo}`);
   }

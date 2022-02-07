@@ -9,7 +9,7 @@
 
 ## Inicio rapido
 
-Execute `npm run start` automaticamente abrirá o `http://localhost:4200/`.
+Execute `npm i && npm run dev` automaticamente abrirá o `http://localhost:4200/`.
 
 ## Docker
 
